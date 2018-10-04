@@ -1,5 +1,6 @@
 package com.api.hiber.mainFile;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.api.hiber.helpers.Factoryhelper;
+import com.api.hiber.models.Yodlee_Employee;
 import com.api.hiber.models.Yodlee_Event;
 
 public class App {
@@ -95,6 +97,23 @@ public class App {
 	}
 	
 	
+	// Adding Employees data which is Fireign Key relationship with Event entity
+	public static void addEmployee(List<Yodlee_Employee> employeeList){
+		Session session = Factoryhelper.getConnection().openSession();
+		Yodlee_Event event = (Yodlee_Event) session.get(Yodlee_Event.class, 2);
+		event.setEmployeeList(employeeList);
+		Transaction transaction = session.beginTransaction();
+		
+		try {
+			session.getTransaction().commit();
+		} catch (HibernateException hib) {
+			hib.printStackTrace();
+			transaction.rollback();
+		}
+		finally {
+			session.close();
+		}
+	}
 	
 	public static void main(String[] args) {
 		
@@ -113,7 +132,17 @@ public class App {
 		
 		//deleteEvent(1); 
 		
-		detachedObject();
+		//detachedObject();
+		
+		List<Yodlee_Employee> empList = new ArrayList<Yodlee_Employee>();
+		Yodlee_Employee empData = new Yodlee_Employee();
+		empData.setEmpId(234);
+		empData.setEmpName("Brown");
+		
+		empList.add(empData);
+		
+		addEmployee(empList); 
+		
 	}
 
 }

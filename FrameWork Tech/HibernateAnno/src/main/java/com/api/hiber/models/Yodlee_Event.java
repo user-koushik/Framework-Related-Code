@@ -61,6 +61,12 @@ public class Yodlee_Event {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	public List<Yodlee_Employee> getEmployeeList() {
+		return employeeList;
+	}
+	public void setEmployeeList(List<Yodlee_Employee> employeeList) {
+		this.employeeList = employeeList;
+	}
 	
 
 }

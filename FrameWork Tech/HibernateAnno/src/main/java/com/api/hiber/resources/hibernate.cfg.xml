@@ -19,7 +19,7 @@
       <!-- Mapping files -->
      
      <mapping class="com.api.hiber.models.Yodlee_Event"/>
-     
+     <mapping class="com.api.hiber.models.Yodlee_Employee"/>
     
 </session-factory>
 </hibernate-configuration>
