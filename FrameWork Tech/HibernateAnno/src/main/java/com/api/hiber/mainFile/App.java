@@ -97,15 +97,14 @@ public class App {
 	}
 	
 	
-	// Adding Employees data which is Fireign Key relationship with Event entity
-	public static void addEmployee(List<Yodlee_Employee> employeeList){
+	// Adding Employees data which is Foriegn Key relationship with Event entity
+	public static void addEmployee(Yodlee_Event event){
 		Session session = Factoryhelper.getConnection().openSession();
-		Yodlee_Event event = (Yodlee_Event) session.get(Yodlee_Event.class, 2);
-		event.setEmployeeList(employeeList);
 		Transaction transaction = session.beginTransaction();
 		
 		try {
-			session.getTransaction().commit();
+			session.save(event);
+			transaction.commit();
 		} catch (HibernateException hib) {
 			hib.printStackTrace();
 			transaction.rollback();
@@ -134,14 +133,21 @@ public class App {
 		
 		//detachedObject();
 		
+		Yodlee_Event event = new Yodlee_Event();
+		event.setName("Hibernate Annotation Demo");
+		event.setEventDate(new Date(118,9,4));
+		event.setLocation("Bangalore");
+		
 		List<Yodlee_Employee> empList = new ArrayList<Yodlee_Employee>();
 		Yodlee_Employee empData = new Yodlee_Employee();
 		empData.setEmpId(234);
 		empData.setEmpName("Brown");
+		empData.setEvent(event); 
 		
 		empList.add(empData);
+		event.setEmployeeList(empList); 
 		
-		addEmployee(empList); 
+		addEmployee(event); 
 		
 	}
 
