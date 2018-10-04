@@ -1,0 +1,19 @@
+HIbernate Interface:
+===================
+
+Session
+SessionFactory
+Configuration
+Transaction
+Query
+Criteria
+
+
+Object State:
+============
+
+Transient
+Persistent
+Detached
+
+
