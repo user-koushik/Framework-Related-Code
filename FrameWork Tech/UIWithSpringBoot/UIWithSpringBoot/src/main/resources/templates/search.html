@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<style>
+
+p
+{
+	display: inline;
+	width:15%;
+}
+table
+{
+width:50%;
+margin-left:25%;
+}
+tr:nth-child(2n+1)
+{
+	background-color: lime;
+	color:black;
+}
+
+form
+{
+	width:50%;
+	margin-left:25%;
+}
+fieldset
+{
+	border:2px double red;
+}
+
+legend
+{
+	text-align: center;
+	font-size: large;
+}
+input
+{
+	width:35%;
+	margin-left: 5%;
+	margin-bottom: 2%
+}
+
+input [type=submit]
+{
+	width:15%;
+	margin-left: 15%;
+	background-color: lime;
+	color: black;
+}
+</style>
+
+</head>
+<body>
+	
+	<p th:text="${flight!=null} ? ${flight.flightCode}"></p>
+	<p th:text="${flight!=null} ? ${flight.serviceProvider}"></p>
+	<p th:text="${flight!=null} ? ${flight.capacity}"></p>
+	
+	<form action="/searchFlight" method="post"> 
+		<fieldset>
+			<legend>Search Flight</legend>
+			<input type="number"  id="flightCode" name="flightCode" placeholder="Flight Code"/>
+			<input type="submit" value="Search Flight"/> 
+		</fieldset>
+	</form>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

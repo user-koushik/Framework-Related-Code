@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<style>
+table
+{
+width:50%;
+margin-left:25%;
+}
+tr:nth-child(2n+1)
+{
+	background-color: lime;
+	color:black;
+}
+
+form
+{
+	width:50%;
+	margin-left:25%;
+}
+fieldset
+{
+	border:2px double red;
+}
+
+legend
+{
+	text-align: center;
+	font-size: large;
+}
+input
+{
+	width:35%;
+	margin-left: 5%;
+	margin-bottom: 2%
+}
+
+input [type=submit]
+{
+	width:15%;
+	margin-left: 15%;
+	background-color: lime;
+	color: black;
+}
+</style>
+
+</head>
+<body>
+
+	<table>
+		<tr>
+			<th>
+				Flight Code
+			</th>
+			<th>
+				Service Provider
+			</th>
+			<th>
+				capacity
+			</th>
+		</tr>
+			<tr th:each="flight : ${flightList}">
+				<td th:text="${flight.flightCode}"></td>
+				<td th:text="${flight.serviceProvider}"></td>
+				<td th:text="${flight.capacity}"></td>
+			</tr>
+			
+	</table>
+	
+	<form action="/saveFlight" method="post"> 
+		<fieldset>
+			<legend>Add Flight</legend>
+			<input type="number"  id="flightCode" name="flightCode" placeholder="Flight Code"/>
+			<input type="text" id="serviceProvider" name="serviceProvider" placeholder="Service Provider"/>
+			<input type="number" id="capacity" name="capacity" placeholder="Capacity"/>
+			
+			<input type="submit" value="Add Flight"/> 
+		</fieldset>
+	</form>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
