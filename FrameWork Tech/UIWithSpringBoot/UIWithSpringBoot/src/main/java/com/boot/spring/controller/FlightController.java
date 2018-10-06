@@ -76,6 +76,10 @@ public class FlightController {
 		return "search";
 		
 	}
+	
+	public void gitHubCommitTest(){
+		
+	}
 }
 
 
