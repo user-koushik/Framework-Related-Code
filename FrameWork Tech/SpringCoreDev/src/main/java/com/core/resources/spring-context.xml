@@ -1,0 +1,46 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	
+	<!-- To identify the annotation whcich is available in the context package -->
+	
+	<context:annotation-config>
+	</context:annotation-config>
+	
+	<!-- We are providing the main core package name to avoid the conflict if there is so many class has same kind of annotation-->
+	
+	<context:component-scan base-package="com.core">
+	</context:component-scan>
+	
+	<!-- No qualifying bean of type 'com.core.models.Address' available: expected single matching bean but found 2: address1,address2
+	because address1, address2 (1,2) will fali the above exception. But if you do (address , address1) will print the value without any error -->
+	<!-- <bean id="address1" class="com.core.models.Address">
+		<property name="streetName" value="Lincoin St."/>
+		<property name="state" value="Bronx"/>
+		<property name="city" value="San Fran"/>
+	</bean>
+	
+	<bean id="address2" class="com.core.models.Address">
+		<property name="streetName" value="Lintt87t."/>
+		<property name="state" value="Bryg7onx"/>
+		<property name="city" value="Ski9i9an"/>
+	</bean> -->
+	
+	<bean id="address1" class="com.core.models.Address">
+		<property name="streetName" value="Lincoin St."/>
+		<property name="state" value="Bronx"/>
+	</bean>
+	
+	<!-- Adding @Component annotation Customer class which will require the default constructor to get the default value otherwise we need to use setter to inject the values -->
+	
+	<!-- <bean id="customer" class="com.core.models.Customer">
+		<constructor-arg index="0" value="12345"/>
+		<constructor-arg index="1" value="Downey"/> 
+	</bean> -->
+
+</beans>
