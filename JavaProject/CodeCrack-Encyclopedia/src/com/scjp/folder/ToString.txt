@@ -1,0 +1,18 @@
+Override toString() when you want a mere mortal to be able to read something meaningful about the objects of your class.
+Code can call toString() on your object when it wants to read useful details about your object.When you pass an object reference to the System.out.println() method, for
+example, the object's toString() method is called, and the return of toString().
+
+Without overriding the toString() method:
+
+o/p : HardToRead@a47e0
+
+Overriding toString() method:
+
+public String toString() {
+return ("I am a Bob, but you can call me " + nickName + ". My shoe size is " + shoeSize);
+} 
+
+o/p: I am Bob but you can call me Bob Dylan.  My shoe size is 8.
+
+
+
